@@ -1,0 +1,24 @@
+# Syntax Coloring Map for RD03D Library
+
+# Datatypes (KEYWORD1)
+RD03D	KEYWORD1
+RD03D_Target	KEYWORD1
+
+# Methods and Functions (KEYWORD2)
+begin	KEYWORD2
+update	KEYWORD2
+enableMultiTarget	KEYWORD2
+onFrame	KEYWORD2
+getTarget	KEYWORD2
+getTargets	KEYWORD2
+getTargetCount	KEYWORD2
+getFrameCount	KEYWORD2
+getErrorCount	KEYWORD2
+setTimeout	KEYWORD2
+isConnected	KEYWORD2
+clear	KEYWORD2
+
+# Constants (LITERAL1)
+RD03D_MAX_TARGETS	LITERAL1
+RD03D_FRAME_SIZE	LITERAL1
+RD03D_BAUD_RATE	LITERAL1
