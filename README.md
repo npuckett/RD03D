@@ -51,23 +51,34 @@ Arduino library for the Ai-Thinker RD-03D 24GHz mmWave Radar sensor with multi-t
 ```cpp
 #include <RD03D.h>
 
+// Create the radar object
 RD03D radar;
 
 void setup() {
     Serial.begin(115200);
-    radar.begin(Serial1, 20, 21);  // RX=GPIO20, TX=GPIO21
+    
+    // Start the radar on Serial1 with RX=GPIO20, TX=GPIO21
+    radar.begin(Serial1, 20, 21);
 }
 
 void loop() {
+    // Call update() to process incoming radar data
     radar.update();
     
-    for (int i = 0; i < 3; i++) {
-        RD03D_Target* t = radar.getTarget(i);
-        if (t && t->valid) {
-            Serial.printf("Target %d: %.1f cm @ %.1f°\n", 
-                          i+1, t->distance, t->angle);
-        }
+    // Copy targets to local variables (avoids pointer syntax)
+    RD03D_Target target1 = *radar.getTarget(0);
+    RD03D_Target target2 = *radar.getTarget(1);
+    RD03D_Target target3 = *radar.getTarget(2);
+    
+    // Check each target and print if valid
+    if (target1.valid) {
+        Serial.print("Target 1: ");
+        Serial.print(target1.distance);
+        Serial.print(" cm @ ");
+        Serial.print(target1.angle);
+        Serial.println(" degrees");
     }
+    
     delay(100);
 }
 ```
